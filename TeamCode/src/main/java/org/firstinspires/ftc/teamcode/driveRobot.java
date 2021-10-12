@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
-@TeleOp
+@TeleOp(name = "14321 Teleop" , group = "Main")
 
 public class driveRobot extends LinearOpMode{
 
@@ -46,15 +46,15 @@ public class driveRobot extends LinearOpMode{
 
         while(opModeIsActive()){
 
-            double robotSpin = gamepad1.right_stick_x;
+            double robotSpin = Math.abs(gamepad1.right_stick_x);
 
-            if(robotSpin >= 0.1){
+            if(gamepad1.right_stick_x >= 0.1){
                 topRightMotor.setPower(-robotSpin);
                 bottomRightMotor.setPower(-robotSpin);
 
                 topLeftMotor.setPower(robotSpin);
                 bottomLeftMotor.setPower(robotSpin);
-            } else if(robotSpin <= -0.1){
+            } else if(gamepad1.right_stick_x <= -0.1){
                 topRightMotor.setPower(robotSpin);
                 bottomRightMotor.setPower(robotSpin);
 
@@ -62,10 +62,10 @@ public class driveRobot extends LinearOpMode{
                 bottomLeftMotor.setPower(-robotSpin);
             } else {
                 horizontal = -gamepad1.left_stick_x;
-                vertical = -gamepad1.left_stick_y;
+                vertical = gamepad1.left_stick_y;
 
-                verticalUsed = vertical*Math.cos(Math.PI/4) + horizontal*Math.sin(Math.PI/4);
-                horizontalUsed = horizontal*Math.cos(Math.PI/4) - vertical*Math.sin(Math.PI/4);
+                verticalUsed = vertical*Math.cos(-Math.PI/4) + horizontal*Math.sin(-Math.PI/4);
+                horizontalUsed = horizontal*Math.cos(-Math.PI/4) - vertical*Math.sin(-Math.PI/4);
 
 
                 bottomLeftMotor.setPower(verticalUsed);

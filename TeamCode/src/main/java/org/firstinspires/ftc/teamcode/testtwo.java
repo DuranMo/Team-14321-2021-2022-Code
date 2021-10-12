@@ -45,13 +45,13 @@ public class testtwo extends LinearOpMode{
 
         while(opModeIsActive()){
 
-            double robotSpin = gamepad1.right_stick_x;
+            double robotSpin = Math.abs(gamepad1.right_stick_x);
 
             horizontal = -gamepad1.left_stick_x;
-            vertical = -gamepad1.left_stick_y;
+            vertical = gamepad1.left_stick_y;
 
-            verticalUsed = vertical*Math.cos(Math.PI/4) + horizontal*Math.sin(Math.PI/4);
-            horizontalUsed = horizontal*Math.cos(Math.PI/4) - vertical*Math.sin(Math.PI/4);
+            verticalUsed = vertical*Math.cos(-Math.PI/4) + horizontal*Math.sin(-Math.PI/4);
+            horizontalUsed = horizontal*Math.cos(-Math.PI/4) - vertical*Math.sin(-Math.PI/4);
 
 
             bottomLeftMotor.setPower(verticalUsed);
@@ -60,13 +60,13 @@ public class testtwo extends LinearOpMode{
             topLeftMotor.setPower(horizontalUsed);
             bottomRightMotor.setPower(horizontalUsed);
 
-            if(robotSpin >= 0.1){
+            if(gamepad1.right_stick_x >= 0.1){
                 topRightMotor.setPower(-robotSpin);
                 bottomRightMotor.setPower(-robotSpin);
 
                 topLeftMotor.setPower(robotSpin);
                 bottomLeftMotor.setPower(robotSpin);
-            } else if(robotSpin <= -0.1){
+            } else if(gamepad1.right_stick_x <= -0.1){
                 topRightMotor.setPower(robotSpin);
                 bottomRightMotor.setPower(robotSpin);
 
