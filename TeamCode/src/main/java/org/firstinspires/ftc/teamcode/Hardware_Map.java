@@ -8,16 +8,16 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Hardware_Map {
 
-    public static DcMotor topRightMotor = null;
-    public static DcMotor topLeftMotor = null;
-    public static DcMotor bottomRightMotor = null;
-    public static DcMotor bottomLeftMotor = null;
-    public static Servo spinnyThing = null;
+    public DcMotor topRightMotor = null;
+    public DcMotor topLeftMotor = null;
+    public DcMotor bottomRightMotor = null;
+    public DcMotor bottomLeftMotor = null;
+    public Servo spinnyThing = null;
 
-    static private HardwareMap hardwareMap = null;
+    private HardwareMap hardwareMap = null;
     public ElapsedTime runTime = new ElapsedTime();
 
-public static void initDevices(HardwareMap HARDWARE_MAP){
+public void init(HardwareMap HARDWARE_MAP){
 
     hardwareMap = HARDWARE_MAP;
 

@@ -27,7 +27,7 @@ public class driveRobot extends LinearOpMode{
 
     public void runOpMode(){
 
-        Hardware_Map.initDevices(hardwareMap);
+        Hardware_Map Hardware_Map = new Hardware_Map();
 
 
         waitForStart();
