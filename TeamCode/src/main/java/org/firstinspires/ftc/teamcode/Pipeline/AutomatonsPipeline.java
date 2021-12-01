@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Pipeline;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.opencv.core.Core;
@@ -12,6 +12,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class AutomatonsPipeline extends OpenCvPipeline {
 
@@ -28,7 +29,7 @@ public class AutomatonsPipeline extends OpenCvPipeline {
 
     public double threshold = 100; // y axis pixel line (where we stop looking above)
 
-    public double blurConstant = 1; // determines how blurry the image will become (kernel size)
+    public double blurConstant = 3; // determines how blurry the image will become (kernel size)
     // change if noise (image flickering) hurts data
 
     public double dilationConstant = 2; //scaling up the pixels to make them more detectable
@@ -76,11 +77,29 @@ public class AutomatonsPipeline extends OpenCvPipeline {
 
         for(MatOfPoint contour : contoursList){
 
+
+
             Rect rect = Imgproc.boundingRect(contour);
 
             if(rect.y >= threshold){
+                String position = null;
+                if(rect.x >= 150){
+
+                    position = "Right with an x value of " + String.valueOf(rect.x);
+
+                }else if(rect.x <= 75){
+
+                    position = "Left with an x value of " + String.valueOf(rect.x);
+
+                }else if(rect.x < 150 && rect.x > 75){
+
+                    duckPosition = 1;
+                    position = "Middle with an x value of " + String.valueOf(rect.x);
+
+
+                }
                 Imgproc.rectangle(contoursOnFrameMat, rect.tl(), rect.br(), new Scalar (255, 0, 0), 2);
-                Imgproc.putText(contoursOnFrameMat, String.valueOf(rect.x), rect.tl(), 0, 0.5, new Scalar (255, 255, 255));
+                Imgproc.putText(contoursOnFrameMat, position, rect.tl(), 0, 0.25, new Scalar (255, 255, 255));
 
                 if(rect.x >= 150){
 
@@ -94,12 +113,23 @@ public class AutomatonsPipeline extends OpenCvPipeline {
 
                     duckPosition = 1;
 
+
                 }
+
+
+
             }
 
         }
 
-        return input; // returns new HSV input image
+        telemetryOpenCV.addData("Position of Duck", getDuckPosition());
+        telemetryOpenCV.update();
+
+        return HSVMat; // returns new HSV input image
+
+
+
+
     }
 
 }

@@ -2,14 +2,12 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Pipeline.AutomatonsPipeline;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @Autonomous(name="AutonomousCode")
 public class AutonomousRobot extends LinearOpMode{
@@ -25,7 +23,7 @@ public class AutonomousRobot extends LinearOpMode{
 
         MecanumDrive MD = new MecanumDrive();
 
-        Hardware_Map AT = new Hardware_Map();
+        Hardware_Map AT = new Hardware_Map(hardwareMap);
 
 
 
@@ -37,7 +35,7 @@ public class AutonomousRobot extends LinearOpMode{
             telemetry.addData("Position of Duck", pipeline.getDuckPosition());
             telemetry.update();
 
-            int positionOfDuck = pipeline.duckPosition;
+            int positionOfDuck = pipeline.getDuckPosition();
 
             switch(positionOfDuck){
                 case 0:

@@ -17,7 +17,7 @@ public class Hardware_Map {
     private HardwareMap hardwareMap = null;
     public ElapsedTime runTime = new ElapsedTime();
 
-public void init(HardwareMap HARDWARE_MAP){
+public Hardware_Map (HardwareMap HARDWARE_MAP){
 
     hardwareMap = HARDWARE_MAP;
 

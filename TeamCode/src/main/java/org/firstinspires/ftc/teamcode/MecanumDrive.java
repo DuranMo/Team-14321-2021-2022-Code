@@ -17,7 +17,7 @@ public class MecanumDrive{
 
 
 
-        Hardware_Map MDM = new Hardware_Map();
+    Hardware_Map MDM;
 
         public void driverEncoders(double specifyPower, double specifyDistance) {
             double distanceToTravel = TICKS_PER_INCH * specifyDistance;
