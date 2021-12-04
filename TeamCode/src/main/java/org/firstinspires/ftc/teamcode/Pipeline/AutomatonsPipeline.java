@@ -125,7 +125,7 @@ public class AutomatonsPipeline extends OpenCvPipeline {
         telemetryOpenCV.addData("Position of Duck", getDuckPosition());
         telemetryOpenCV.update();
 
-        return HSVMat; // returns new HSV input image
+        return contoursOnFrameMat; // returns new HSV input image
 
 
 

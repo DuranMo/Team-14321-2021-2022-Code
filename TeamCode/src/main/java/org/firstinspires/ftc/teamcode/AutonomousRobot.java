@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class AutonomousRobot extends LinearOpMode{
     OpenCvCamera logitechCamera;
     AutomatonsPipeline pipeline;
+    MecanumDrive MD;
 
     @Override
     public void runOpMode(){
@@ -21,10 +22,9 @@ public class AutonomousRobot extends LinearOpMode{
         logitechCamera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         logitechCamera.setPipeline(pipeline);
 
-        MecanumDrive MD = new MecanumDrive();
-
         Hardware_Map AT = new Hardware_Map(hardwareMap);
 
+        MD = new MecanumDrive(AT);
 
 
 

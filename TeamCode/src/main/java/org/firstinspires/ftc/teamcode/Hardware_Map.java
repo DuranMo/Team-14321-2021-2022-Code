@@ -8,11 +8,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Hardware_Map {
 
-    public DcMotor topRightMotor = null;
-    public DcMotor topLeftMotor = null;
-    public DcMotor bottomRightMotor = null;
-    public DcMotor bottomLeftMotor = null;
-    public Servo spinnyThing = null;
+    public DcMotor topRightMotor;
+    public DcMotor topLeftMotor;
+    public DcMotor bottomRightMotor;
+    public DcMotor bottomLeftMotor;
+    public Servo spinnyThing;
 
     private HardwareMap hardwareMap = null;
     public ElapsedTime runTime = new ElapsedTime();

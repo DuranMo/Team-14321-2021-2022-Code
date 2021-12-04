@@ -14,12 +14,15 @@ public class MecanumDrive{
 
     static final double MOTOR_TICK_COUNTS = 537.7;
     static final double TICKS_PER_INCH = MOTOR_TICK_COUNTS/12.3622;
-
-
-
     Hardware_Map MDM;
 
-        public void driverEncoders(double specifyPower, double specifyDistance) {
+    public MecanumDrive(Hardware_Map A){
+
+        MDM = A;
+    }
+
+
+    public void driverEncoders(double specifyPower, double specifyDistance) {
             double distanceToTravel = TICKS_PER_INCH * specifyDistance;
             double wantedEncoderPosition = MDM.topLeftMotor.getCurrentPosition() + distanceToTravel;
 
