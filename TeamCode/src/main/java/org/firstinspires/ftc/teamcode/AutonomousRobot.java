@@ -14,6 +14,7 @@ public class AutonomousRobot extends LinearOpMode{
     OpenCvCamera logitechCamera;
     AutomatonsPipeline pipeline;
     MecanumDrive MD;
+    CarouselSpin Carousel;
 
     @Override
     public void runOpMode(){
@@ -25,6 +26,7 @@ public class AutonomousRobot extends LinearOpMode{
         Hardware_Map AT = new Hardware_Map(hardwareMap);
 
         MD = new MecanumDrive(AT);
+        Carousel = new CarouselSpin(AT);
 
 
 
@@ -39,6 +41,8 @@ public class AutonomousRobot extends LinearOpMode{
 
             switch(positionOfDuck){
                 case 0:
+
+
                     break;
                 case 1:
                     break;

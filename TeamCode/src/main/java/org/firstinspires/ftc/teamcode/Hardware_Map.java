@@ -12,7 +12,7 @@ public class Hardware_Map {
     public DcMotor topLeftMotor;
     public DcMotor bottomRightMotor;
     public DcMotor bottomLeftMotor;
-    public Servo spinnyThing;
+    public DcMotor spinnyThing;
 
     private HardwareMap hardwareMap = null;
     public ElapsedTime runTime = new ElapsedTime();
@@ -24,9 +24,9 @@ public Hardware_Map (HardwareMap HARDWARE_MAP){
     topLeftMotor = hardwareMap.get(DcMotor.class, "topLeftMotor");
     topRightMotor = hardwareMap.get(DcMotor.class, "topRightMotor");
     bottomLeftMotor = hardwareMap.get(DcMotor.class, "bottomLeftMotor");
-    bottomLeftMotor = hardwareMap.get(DcMotor.class, "bottomRightMotor");
+    bottomRightMotor = hardwareMap.get(DcMotor.class, "bottomRightMotor");
 
-    spinnyThing = hardwareMap.get(Servo.class, "spinnyThing");
+    spinnyThing = hardwareMap.get(DcMotor.class, "spinnyThing");
 
     topRightMotor.setDirection(DcMotor.Direction.REVERSE);
     bottomRightMotor.setDirection(DcMotor.Direction.REVERSE);
