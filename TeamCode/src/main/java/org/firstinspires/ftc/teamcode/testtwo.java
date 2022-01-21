@@ -17,6 +17,7 @@ public class testtwo extends LinearOpMode{
     private DcMotor topLeftMotor;
     private DcMotor bottomRightMotor;
     private DcMotor bottomLeftMotor;
+    private Servo weirdArm;
 
     double horizontal;
     double vertical;
@@ -31,6 +32,8 @@ public class testtwo extends LinearOpMode{
         bottomLeftMotor = hardwareMap.dcMotor.get("bottomleftmotor");
         topRightMotor = hardwareMap.dcMotor.get("toprightmotor");
         topLeftMotor = hardwareMap.dcMotor.get("topleftmotor");
+        weirdArm = hardwareMap.servo.get("W_A");
+
 
         topRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         bottomRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -73,9 +76,20 @@ public class testtwo extends LinearOpMode{
                 topLeftMotor.setPower(-robotSpin);
                 bottomLeftMotor.setPower(-robotSpin);
             }
+
+            if(gamepad1.right_bumper){
+
+                weirdArm.setPosition(1);
+
+            }else if (gamepad1.left_bumper){
+
+                weirdArm.setPosition(0);
+
+            }
             telemetry.addData("robotSpin", "%.2f", robotSpin);
             telemetry.addData("horizontal", "%.2f", horizontalUsed);
             telemetry.addData("vertical", "%.2f", verticalUsed);
+
 
             }
         }
