@@ -18,12 +18,47 @@ public class testtwo extends LinearOpMode{
     private DcMotor bottomRightMotor;
     private DcMotor bottomLeftMotor;
     private Servo weirdArm;
+    private DcMotor carouselMotor;
+    private DcMotor intakeMotor;
 
     double horizontal;
     double vertical;
 
     double horizontalUsed;
     double verticalUsed;
+
+    boolean maxJoe = true;
+    boolean maxJoe2 = true;
+
+    static final double MOTOR_TICK_COUNTS = 537.7;
+    static final double TICKS_PER_INCH = MOTOR_TICK_COUNTS/12.3622;
+
+    public void carouselEncoders(double specifyPower, double specifyDistance) {
+        double distanceToTravel = TICKS_PER_INCH * specifyDistance;
+        double wantedEncoderPosition = carouselMotor.getCurrentPosition() + distanceToTravel;
+
+
+        if(specifyPower>0){
+
+            carouselMotor.setPower(specifyPower);
+
+            while(topLeftMotor.getCurrentPosition() < wantedEncoderPosition){
+
+            }
+
+        } else{
+            carouselMotor.setPower(specifyPower);
+
+            while(carouselMotor.getCurrentPosition() > wantedEncoderPosition){
+
+            }
+
+
+        }
+
+    }
+
+
 
     @Override
 
@@ -47,6 +82,40 @@ public class testtwo extends LinearOpMode{
 
 
         while(opModeIsActive()){
+
+            if(gamepad2.dpad_down){
+
+                intakeMotor.setPower(-1);
+
+            }else{
+                intakeMotor.setPower(0);
+            }
+
+            if(gamepad2.dpad_up){
+
+                intakeMotor.setPower(1);
+
+            }else{
+
+                intakeMotor.setPower(0);
+
+            }
+
+            if(gamepad2.x && maxJoe){
+
+                maxJoe = false;
+
+                carouselEncoders(0.5, 12);
+                carouselEncoders(1, 6);
+
+                maxJoe = true;
+            } else if(gamepad2.y && maxJoe2){
+
+                carouselEncoders(-0.5, 12);
+                carouselEncoders(-1, 6);
+
+            }
+
 
             double robotSpin = Math.abs(gamepad1.right_stick_x);
 

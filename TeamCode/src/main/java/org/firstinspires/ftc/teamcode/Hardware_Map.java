@@ -14,8 +14,13 @@ public class Hardware_Map {
     public DcMotor bottomLeftMotor;
     public DcMotor spinnyThing;
 
+    static final double MOTOR_TICK_COUNTS = 537.7;
+    static final double TICKS_PER_INCH = MOTOR_TICK_COUNTS/12.3622;
+
     private HardwareMap hardwareMap = null;
     public ElapsedTime runTime = new ElapsedTime();
+
+
 
 public Hardware_Map (HardwareMap HARDWARE_MAP){
 
@@ -50,6 +55,9 @@ public Hardware_Map (HardwareMap HARDWARE_MAP){
     topLeftMotor.setPower(0);
     bottomRightMotor.setPower(0);
     bottomLeftMotor.setPower(0);
+
+
+
 }
 
 

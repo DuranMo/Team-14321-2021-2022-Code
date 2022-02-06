@@ -19,6 +19,8 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 public class driveRobot extends LinearOpMode{
 
 
+
+
     double horizontal;
     double vertical;
     double horizontalUsed;
@@ -42,6 +44,8 @@ public class driveRobot extends LinearOpMode{
     double clawDescent = -1;
 
 
+
+
     @Override
 
     public void runOpMode(){
@@ -49,10 +53,13 @@ public class driveRobot extends LinearOpMode{
         Hardware_Map Hardware_Map = new Hardware_Map(hardwareMap);
 
 
+
         waitForStart();
 
 
         while(opModeIsActive()){
+
+
 
             if(gamepad2.left_bumper && maxJoe) {
 
